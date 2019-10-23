@@ -27,7 +27,7 @@
     <ClInclude Include="VirtualKeyDriver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="OutputDriver.h">
+    <ClInclude Include="DriverPlugin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
