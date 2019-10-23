@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VirtualKeyDriver", "Virtual
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OutputVJoyDriver", "OutputVJoyDriver\OutputVJoyDriver.vcxproj", "{43C8DEB3-96DE-4E2B-ADF3-3A9B1441B684}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InputRandomDriver", "InputRandomDriver\InputRandomDriver.vcxproj", "{E69149A0-FBB0-4AE0-A35B-EEF62E9E7BC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{43C8DEB3-96DE-4E2B-ADF3-3A9B1441B684}.Release|x64.Build.0 = Release|x64
 		{43C8DEB3-96DE-4E2B-ADF3-3A9B1441B684}.Release|x86.ActiveCfg = Release|Win32
 		{43C8DEB3-96DE-4E2B-ADF3-3A9B1441B684}.Release|x86.Build.0 = Release|Win32
+		{E69149A0-FBB0-4AE0-A35B-EEF62E9E7BC3}.Debug|x64.ActiveCfg = Debug|x64
+		{E69149A0-FBB0-4AE0-A35B-EEF62E9E7BC3}.Debug|x64.Build.0 = Debug|x64
+		{E69149A0-FBB0-4AE0-A35B-EEF62E9E7BC3}.Debug|x86.ActiveCfg = Debug|Win32
+		{E69149A0-FBB0-4AE0-A35B-EEF62E9E7BC3}.Debug|x86.Build.0 = Debug|Win32
+		{E69149A0-FBB0-4AE0-A35B-EEF62E9E7BC3}.Release|x64.ActiveCfg = Release|x64
+		{E69149A0-FBB0-4AE0-A35B-EEF62E9E7BC3}.Release|x64.Build.0 = Release|x64
+		{E69149A0-FBB0-4AE0-A35B-EEF62E9E7BC3}.Release|x86.ActiveCfg = Release|Win32
+		{E69149A0-FBB0-4AE0-A35B-EEF62E9E7BC3}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
