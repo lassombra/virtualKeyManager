@@ -19,6 +19,7 @@ LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 STRING				StatusMessage(L"Initializing");
+OutputDriver* OutDriver = nullptr;
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -44,6 +45,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_VIRTUALKEYDRIVER));
 
     MSG msg;
+
+	
 
     // Main message loop:
     while (GetMessage(&msg, nullptr, 0, 0))
@@ -107,6 +110,14 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    {
       return FALSE;
    }
+   OutDriver = getDriver();
+   StatusMessage += L" ";
+   StatusMessage += OutDriver->name;
+   StatusMessage += L" - Loaded! - ";
+   StatusMessage += std::to_wstring((int)(OutDriver->getCaps().Buttons));
+   StatusMessage += L" Buttons supported, ";
+   StatusMessage += std::to_wstring((int)(OutDriver->getCaps().DPads));
+   StatusMessage += L" DPads supported.";
 
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
@@ -141,8 +152,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 DestroyWindow(hWnd);
                 break;
 			case IDM_MINIMIZE:
-				StatusMessage = fnOutputVJoyDriver();
-				InvalidateRect(hWnd, nullptr, TRUE);
 				break;
             default:
                 return DefWindowProc(hWnd, message, wParam, lParam);
