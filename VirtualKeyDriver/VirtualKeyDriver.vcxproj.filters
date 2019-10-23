@@ -36,6 +36,9 @@
     <ClInclude Include="OutputDriverPlugin.h">
       <Filter>Header Files\Plugins</Filter>
     </ClInclude>
+    <ClInclude Include="InputDriverPlugin.h">
+      <Filter>Header Files\Plugins</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VirtualKeyDriver.cpp">

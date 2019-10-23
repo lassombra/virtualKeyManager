@@ -55,3 +55,41 @@ struct OutputDriver {
 	// The user friendly name of this driver used in configuration options
 	const wchar_t* name;
 };
+
+// Input Driver handles
+struct InputActions {
+	// function to pass a button down action
+	// function is semi-idempotent in that it will
+	// always fire the action on the output driver, but the
+	// output driver is expected to be idempotent.
+	void(__cdecl* setDown)(BYTE button);
+	// function to pass a button up action
+	// function is semi-idempotent in that it will
+	// always fire the action on the output driver, but the
+	// output driver is expected to be idempotent.
+	void(__cdecl* setUp)(BYTE button);
+	// function to set a dpad state.
+	// function is semi-idempotent in that it will always
+	// fire the action on the output driver, but the output
+	// driver is epxected to be idempotent.
+	void(__cdecl* setDPad)(BYTE dPad, DPad direction);
+};
+
+// InputDriver object
+struct InputDriver {
+	// called whenever capabilities change.  Not expected
+	// to immediately update UI (discretion of plugin)
+	// but expected to immediately stop sending instructions
+	// oustide of new capabilities.
+	// If input driver is acting in a multi-threaded fashion, must be thread safe.
+	void(__cdecl* setCapabilities)(const Capabilities& caps);
+	// called to initialize input driver.  Can be used to set up required
+	// system resources and activate input mechanisms.
+	BOOL(__cdecl* activate)(const InputActions&);
+	// called to deactivate the input driver.  Should immediately stop accepting input
+	// and should immediately stop sending actions.
+	// Should be used to clean up system resources allocated in activation
+	BOOL(__cdecl* deactivate)();
+	// The user friendly name of this driver used in configuration options
+	const wchar_t* name;
+};
