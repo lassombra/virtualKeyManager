@@ -3,7 +3,7 @@
 
 #include "framework.h"
 #include "VirtualKeyDriver.h"
-#include "OutputDriver.h"
+#include "OutputDriverPlugin.h"
 
 #define MAX_LOADSTRING 100
 
@@ -110,7 +110,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    {
       return FALSE;
    }
-   OutDriver = getDriver();
+   OutDriver = getOutputDriver();
    StatusMessage += L" ";
    StatusMessage += OutDriver->name;
    StatusMessage += L" - Loaded! - ";
@@ -192,5 +192,8 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
         }
         break;
     }
+	if (OutDriver != nullptr) {
+		releaseOutputDriver(OutDriver);
+	}
     return (INT_PTR)FALSE;
 }

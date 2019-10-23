@@ -6,10 +6,10 @@
 // that uses this DLL. This way any other project whose source files include this file see
 // OUTPUTVJOYDRIVER_API functions as being imported from a DLL, whereas this DLL sees symbols
 // defined with this macro as being exported.
-#ifdef OUTPUTDRIVER_EXPORTS
-#define OUTPUTDRIVER_API __declspec(dllexport)
+#ifdef DRIVER_EXPORTS
+#define DRIVER_API __declspec(dllexport)
 #else
-#define OUTPUTDRIVER_API __declspec(dllimport)
+#define DRIVER_API __declspec(dllimport)
 #endif
 
 // available buttons and dpads to press/release.
@@ -27,6 +27,8 @@ enum DPad:BYTE{
 	Right,
 	None
 };
+
+// OutputDriver object
 struct OutputDriver {
 	// called once after activation to get capabilities.  Assumed unchanged after that
 	const Capabilities& (__cdecl *getCaps)();
@@ -53,16 +55,3 @@ struct OutputDriver {
 	// The user friendly name of this driver used in configuration options
 	const wchar_t* name;
 };
-
-//Loads a pointer to a driver structure.  This structure should be fully populated
-//with all function handles at the time this is called.  The driver is permitted
-//to maintain a pointer or reference to this driver as well, and to that end can
-//change the function handles to reflect changing driver states.
-//however, get caps will only be called once, during activation of the driver.
-//It will only be called again if the driver is deactivated and reactivated.
-//Get Caps is assumed to be idempotent.
-extern "C" OUTPUTDRIVER_API OutputDriver* __cdecl getDriver(void);
-//Called to inform the module that the driver is no longer needed.  It will not
-//be referenced again after this call is made.
-//The call will only be made when the driver module is being unloaded.
-extern "C" OUTPUTDRIVER_API void __cdecl releaseDriver(OutputDriver* driver);
