@@ -152,7 +152,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
-    <ClInclude Include="OutputDriver.h" />
+    <ClInclude Include="DriverPlugin.h" />
+    <ClInclude Include="InputDriverPlugin.h" />
+    <ClInclude Include="OutputDriverPlugin.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="VirtualKeyDriver.h" />
@@ -168,6 +170,9 @@
     <Image Include="VirtualKeyDriver.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\InputRandomDriver\InputRandomDriver.vcxproj">
+      <Project>{e69149a0-fbb0-4ae0-a35b-eef62e9e7bc3}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\OutputVJoyDriver\OutputVJoyDriver.vcxproj">
       <Project>{43c8deb3-96de-4e2b-adf3-3a9b1441b684}</Project>
     </ProjectReference>

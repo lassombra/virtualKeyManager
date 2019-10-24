@@ -30,7 +30,7 @@ BOOL __cdecl deactivate() {
 OutputDriver driver = OutputDriver();
 
 
-extern "C" OUTPUTDRIVER_API OutputDriver* __cdecl getDriver(void) {
+extern "C" DRIVER_API const OutputDriver& __cdecl getOutputDriver(void) {
 	Caps.Buttons = 128;
 	Caps.DPads = 2;
 	driver.name = L"VJoy Output Driver";
@@ -40,6 +40,6 @@ extern "C" OUTPUTDRIVER_API OutputDriver* __cdecl getDriver(void) {
 	driver.getCaps = &getCaps;
 	driver.activate = &activate;
 	driver.deactivate = &deactivate;
-	return &driver;
+	return driver;
 }
-extern "C" OUTPUTDRIVER_API void __cdecl releaseDriver(OutputDriver * driver) {}
+extern "C" DRIVER_API void __cdecl releaseOutputDriver() {}
