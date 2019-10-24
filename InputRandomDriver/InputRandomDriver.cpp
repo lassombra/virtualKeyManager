@@ -1,7 +1,12 @@
+#include "pch.h"
 #include "InputRandomDriver.h"
 
-extern "C" DRIVER_API InputDriver * __cdecl getInputDriver(void) {
-	return &InputDriver();
-}
+const InputActions* actions;
 
-extern "C" DRIVER_API void __cdecl releaseInputDriver(InputDriver * driver) {}
+extern "C" DRIVER_API const InputDriver& __cdecl getInputDriver(const InputActions &ActionSpec) {
+	actions = &ActionSpec;
+	return InputDriver();
+}
+extern "C" DRIVER_API void __cdecl releaseInputDriver() {
+
+}
