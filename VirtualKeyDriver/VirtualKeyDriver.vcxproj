@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\Util\InterruptibleThread.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="DriverPlugin.h" />
     <ClInclude Include="InputDriverPlugin.h" />
