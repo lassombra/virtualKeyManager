@@ -4,6 +4,7 @@
 #include "framework.h"
 #include "VirtualKeyDriver.h"
 #include "OutputDriverPlugin.h"
+#include "InputDriverPlugin.h"
 
 #define MAX_LOADSTRING 100
 
@@ -19,8 +20,20 @@ LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 STRING				StatusMessage(L"Initializing");
-OutputDriver* OutDriver = nullptr;
+const OutputDriver* OutDriver = nullptr;
+const InputDriver* InDriver = nullptr;
+InputActions	actions;
 
+
+void __cdecl setDown(BYTE btn) {
+	StatusMessage = std::to_wstring((int)(btn));
+}
+void __cdecl setUp(BYTE btn) {
+
+}
+void __cdecl setDPad(BYTE dPad, DPad direction) {
+
+}
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPWSTR    lpCmdLine,
@@ -57,6 +70,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             DispatchMessage(&msg);
         }
     }
+
+	InDriver->deactivate();
+	releaseOutputDriver();
+	releaseInputDriver();
 
     return (int) msg.wParam;
 }
@@ -110,7 +127,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    {
       return FALSE;
    }
-   OutDriver = getOutputDriver();
+   OutDriver = &getOutputDriver();
    StatusMessage += L" ";
    StatusMessage += OutDriver->name;
    StatusMessage += L" - Loaded! - ";
@@ -118,6 +135,12 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    StatusMessage += L" Buttons supported, ";
    StatusMessage += std::to_wstring((int)(OutDriver->getCaps().DPads));
    StatusMessage += L" DPads supported.";
+   actions.setDown = &setDown;
+   actions.setUp = &setUp;
+   actions.setDPad = &setDPad;
+   InDriver = &getInputDriver();
+   InDriver->activate(actions);
+   InDriver->setCapabilities(OutDriver->getCaps());
 
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
@@ -192,8 +215,5 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
         }
         break;
     }
-	if (OutDriver != nullptr) {
-		releaseOutputDriver(OutDriver);
-	}
     return (INT_PTR)FALSE;
 }
