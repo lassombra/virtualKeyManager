@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Plugins">
-      <UniqueIdentifier>{350cd0ba-7291-4bbc-9416-42d108496aa3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Util">
-      <UniqueIdentifier>{f5484ff6-e10f-43b0-a1da-805f423dfcc2}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -32,18 +26,6 @@
     </ClInclude>
     <ClInclude Include="VirtualKeyDriver.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DriverPlugin.h">
-      <Filter>Header Files\Plugins</Filter>
-    </ClInclude>
-    <ClInclude Include="OutputDriverPlugin.h">
-      <Filter>Header Files\Plugins</Filter>
-    </ClInclude>
-    <ClInclude Include="InputDriverPlugin.h">
-      <Filter>Header Files\Plugins</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Util\InterruptibleThread.h">
-      <Filter>Header Files\Util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

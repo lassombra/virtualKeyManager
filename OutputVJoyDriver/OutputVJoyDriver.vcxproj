@@ -78,7 +78,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>OUTPUTVJOYDRIVER</TargetName>
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\VirtualKeyDriver;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <TargetName>OUTPUTVJOYDRIVER</TargetName>

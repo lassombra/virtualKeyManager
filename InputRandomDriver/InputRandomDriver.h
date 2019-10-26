@@ -1,6 +1,6 @@
 #pragma once
 
-#include "InputDriverPlugin.h"
+#include "../PluginDefinitions/InputDriverPlugin.h"
 #include "../Util/Interruptible.h"
 #include <atomic>
 

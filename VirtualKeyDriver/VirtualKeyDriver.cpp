@@ -3,8 +3,8 @@
 
 #include "framework.h"
 #include "VirtualKeyDriver.h"
-#include "OutputDriverPlugin.h"
-#include "InputDriverPlugin.h"
+#include "../PluginDefinitions/InputDriverPlugin.h"
+#include "../PluginDefinitions/OutputDriverPlugin.h"
 
 #define MAX_LOADSTRING 100
 
